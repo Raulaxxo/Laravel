@@ -67,10 +67,20 @@ Cada servicio incluye una revisión de salud para asegurar que se está ejecutan
 
 *   `dbdata`: Persiste los datos de la base de datos MySQL.
 
-## Contribución
+## Scripts
 
-Siéntete libre de contribuir a este proyecto enviando pull requests.
+Los siguientes scripts están disponibles para facilitar tareas comunes:
 
-## Licencia
+*   `fix-permisos`: Corrige los permisos dentro del contenedor PHP.
+*   `migraciones`: Ejecuta las migraciones básicas de Laravel para la base de datos.
+*   `start-nginx`: Cambia la URL en el archivo `localhost.conf` cuando se inicia el contenedor Nginx.
 
-[Especifica
+## Env-compose
+
+Este sistema permite pasar variables al archivo `docker-compose.yml`, lo que facilita el cambio de la URL al levantar el sitio.
+
+Para utilizarlo, crea un archivo llamado `.env-compose` con las variables que deseas modificar y luego ejecuta el siguiente comando:
+
+```bash
+docker compose --env-file .env-compose up -d 
+```
