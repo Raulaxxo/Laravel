@@ -1,4 +1,4 @@
-name: Reuse Docker Build Workflow
+name: Build and Push Docker Image
 
 on:
   push:
@@ -17,3 +17,4 @@ jobs:
     secrets:
       REGISTRY_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       REGISTRY_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+
