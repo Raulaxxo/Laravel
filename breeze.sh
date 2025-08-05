@@ -9,5 +9,8 @@ docker exec -it $CONTAINER php artisan breeze:install
 docker exec -it $CONTAINER npm install
 docker exec -it $CONTAINER npm run build
 docker exec -it $CONTAINER php artisan migrate --force
+docker exec -it $CONTAINER php artisan session:table
+docker exec -it $CONTAINER php artisan migrate
+
 
 echo "✅ Laravel Breeze instalado correctamente."
