@@ -3,6 +3,10 @@
 # Nombre del contenedor PHP-FPM
 CONTAINER=laravel-app
 
+echo " 🔧 copiando archivo .env..." 
+
+cp env-main src/.env 
+
 echo "🔧 Corrigiendo permisos dentro del contenedor $CONTAINER..."
 
 docker exec -it $CONTAINER bash -c "
@@ -11,3 +15,4 @@ docker exec -it $CONTAINER bash -c "
   echo '✅ Permisos corregidos correctamente.'
 "
 echo "🔧 Permisos corregidos. Ahora puedes continuar con tu desarrollo en Laravel."
+

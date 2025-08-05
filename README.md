@@ -84,3 +84,11 @@ Para utilizarlo, crea un archivo llamado `.env-compose` con las variables que de
 ```bash
 docker compose --env-file .env-compose up -d 
 ```
+
+Certbot
+
+Puedes agregar un cron job en el host o un contenedor adicional para ejecutar:
+
+bash
+
+certbot renew --webroot --webroot-path=/var/www/html

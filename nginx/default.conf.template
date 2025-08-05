@@ -1,6 +1,25 @@
 server {
     listen 80;
-    server_name ${APP_DOMAIN};  # Puedes dejarlo como localhost o usar una variable si lo templates
+    server_name ${APP_DOMAIN};
+
+    root /var/www/html/public;
+    index index.php index.html;
+
+    location /.well-known/acme-challenge/ {
+        root /var/www/html;
+    }
+
+    location / {
+        return 301 https://$host$request_uri;
+    }
+}
+
+server {
+    listen 443 ssl;
+    server_name ${APP_DOMAIN};
+
+    ssl_certificate /etc/letsencrypt/live/${APP_DOMAIN}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/${APP_DOMAIN}/privkey.pem;
 
     root /var/www/html/public;
     index index.php index.html;
@@ -10,16 +29,13 @@ server {
     }
 
     location ~ \.php$ {
-        try_files $uri =404;
-        include fastcgi_params;
         fastcgi_pass app:9000;
         fastcgi_index index.php;
+        include fastcgi_params;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        fastcgi_param DOCUMENT_ROOT $document_root;
     }
 
     location ~ /\.ht {
         deny all;
     }
 }
-
