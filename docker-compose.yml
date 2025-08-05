@@ -78,7 +78,7 @@ services:
       - ./src:/var/www/html
     depends_on:
       - nginx
-    command: certonly --manual --preferred-challenges dns --email raulaxxo@gmail.com --agree-tos --no-eff-email -d ${APP_DOMAIN}
+    #command: certonly --manual --preferred-challenges dns --email raulaxxo@gmail.com --agree-tos --no-eff-email -d ${APP_DOMAIN}
     networks:
       - laravel-network
 
