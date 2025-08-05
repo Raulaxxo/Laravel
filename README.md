@@ -16,7 +16,7 @@ Este proyecto proporciona un entorno de desarrollo Dockerizado para aplicaciones
 1.  **Clona el repositorio:**
 
     ```bash
-    git clone <URL_del_repositorio>
+    git clone https://github.com/Raulaxxo/Laravel.git
     cd <directorio_del_proyecto>
     ```
 
