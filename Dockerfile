@@ -35,3 +35,5 @@ RUN mkdir -p /var/www/html/storage \
 
 # (Opcional) Copiar configuración de PHP personalizada si la tienes
 # COPY php.ini /usr/local/etc/php/conf.d/custom.ini
+
+#EXPOSE 9000
