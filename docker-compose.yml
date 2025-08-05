@@ -1,15 +1,15 @@
-#ersion: '3.8'
+#version: '3.8'
 
 services:
   app:
-    image: your-dockerhub-username/laravel-app:latest # Replace with your Docker Hub username and desired tag
+    image: 
     container_name: laravel-app
     hostname: Laravel
     restart: unless-stopped
     working_dir: /var/www/html
     volumes:
       - ./src:/var/www/html
-      - ./php.ini:/usr/local/etc/php/conf.d/custom.ini  # opcional para php config
+      #- ./php.ini:/usr/local/etc/php/conf.d/custom.ini  # opcional para php config
     ports:
       - "8000:8000"
     networks:
