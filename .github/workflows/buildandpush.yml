@@ -3,8 +3,8 @@ name: Build and Push Docker Image
 on:
   push:
     branches: [ master ]
-    #paths:
-     # - 'Dockerfile'
+    paths:
+      - 'Dockerfile'
 
 jobs:
   call-build-push:
