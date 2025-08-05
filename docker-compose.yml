@@ -2,7 +2,7 @@
 
 services:
   app:
-    image: raulaxxo/laravel:1.0
+    image: raulaxxo/laravel:1.2
     container_name: laravel-app
     hostname: Laravel
     restart: unless-stopped
@@ -13,6 +13,11 @@ services:
       - "9000:9000"
     networks:
       - laravel-network
+    healthcheck:
+      test: ["CMD", "pgrep", "php-fpm"]
+      interval: 30s
+      timeout: 10s
+      retries: 3  
     depends_on:
       - db
 
@@ -32,6 +37,11 @@ services:
       - dbdata:/var/lib/mysql
     networks:
       - laravel-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "laraveluser", "-psecret"]
+      interval: 30s
+      timeout: 10s
+      retries: 5  
 
   nginx:
     image: nginx:latest
@@ -46,7 +56,12 @@ services:
     depends_on:
       - app
     networks:
-      - laravel-network      
+      - laravel-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5     
  
 networks:
   laravel-network:
