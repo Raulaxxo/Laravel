@@ -2,16 +2,15 @@
 
 services:
   app:
-    image: 
+    image: raulaxxo/laravel:1.0
     container_name: laravel-app
     hostname: Laravel
     restart: unless-stopped
-    working_dir: /var/www/html
     volumes:
       - ./src:/var/www/html
       #- ./php.ini:/usr/local/etc/php/conf.d/custom.ini  # opcional para php config
     ports:
-      - "8000:8000"
+      - "9000:9000"
     networks:
       - laravel-network
     depends_on:
@@ -34,9 +33,11 @@ services:
     networks:
       - laravel-network
 
-nginx:
+  nginx:
     image: nginx:latest
     container_name: laravel-nginx
+    hostname: nginx
+    restart: unless-stopped
     ports:
       - "8000:80"
     volumes:
@@ -46,7 +47,7 @@ nginx:
       - app
     networks:
       - laravel-network      
-
+ 
 networks:
   laravel-network:
 
