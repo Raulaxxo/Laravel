@@ -3,6 +3,8 @@ name: Reuse Docker Build Workflow
 on:
   push:
     branches: [ main ]
+    paths:
+      - 'Dockerfile'
 
 jobs:
   call-build-push:
