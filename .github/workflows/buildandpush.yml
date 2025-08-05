@@ -11,9 +11,9 @@ jobs:
     uses: Raulaxxo/DockerBuildPush/.github/workflows/build-and-push-docker.yml@master
     with:
       image_name: raulaxxo/laravel
-      image_version: 1.2
+      image_tag: 1.2
       dockerfile_path: ./Dockerfile
-      context_path: .
+      context: .
     secrets:
       REGISTRY_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       REGISTRY_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
